@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:rickandmorty/presentation/dashboard_page.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:rickandmorty/presentation/home/home_binding.dart';
+import 'package:rickandmorty/presentation/home/home_page.dart';
+import 'package:rickandmorty/routes/pages.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const DashboardPage(),
-    );
+    return GetMaterialApp(
+        title: 'Flutter Demo',
+        getPages: getPages,
+        theme: ThemeData(
+          appBarTheme: AppBarTheme(backgroundColor: Colors.white),
+          primarySwatch: Colors.blue,
+        ),
+        initialBinding: HomeBinding(),
+        initialRoute: HomePage.TAG);
   }
 }
