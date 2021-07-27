@@ -20,6 +20,7 @@ class _HomePageState extends State<HomePage>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Image.asset(
           'assets/logo/rnm_logo.png',
           fit: BoxFit.fill,

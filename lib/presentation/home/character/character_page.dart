@@ -1,12 +1,17 @@
 import 'dart:ui';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:rickandmorty/application/character_cubit/character_controller.dart';
 import 'package:rickandmorty/application/character_cubit/character_cubit.dart';
 import 'package:rickandmorty/domain/character/character_enum.dart';
+import 'package:rickandmorty/presentation/home/character/character_serach_page.dart';
+import 'package:rickandmorty/presentation/home/widgets/character_card_widget.dart';
+import 'package:rickandmorty/presentation/home/widgets/custom_widget.dart';
 
 import '../../../injectable.dart';
 
@@ -28,120 +33,116 @@ class CharacterGridWidget extends StatefulWidget {
 
 class _CharacterGridWidgetState extends State<CharacterGridWidget> {
   final controller = Get.find<CharacterController>();
+  RefreshController _refreshController =
+      RefreshController(initialRefresh: false);
+  void _onRefresh() async {
+    _characterCubit.getAllCharacter();
+  }
+
+  void _onLoading(String url) async {
+    // monitor network fetch
+    _characterCubit.loadMoreCharacters(url: url);
+  }
+
+  final _characterCubit = getIt<CharacterCubit>();
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<CharacterCubit>()..getAllCharacter(),
+      create: (context) => _characterCubit..getAllCharacter(),
       child: BlocConsumer<CharacterCubit, CharacterState>(
         listener: (context, state) {
           state.maybeMap(
-            orElse: () {},
-            onGetCharacter: (e) {
-              controller.setCharacterData(e.characterData);
-            },
-          );
+              orElse: () {},
+              onGetCharacter: (e) {
+                controller.setCharacterData(e.characterData);
+                _refreshController.refreshCompleted();
+              },
+              onLoadMoreCharacter: (e) {
+                _refreshController.loadComplete();
+                controller.addCharacterListData(e.characterData);
+              });
         },
         builder: (context, state) {
-          return GridView.builder(
-            itemCount: controller.getCharacterList.length,
-            padding: EdgeInsets.symmetric(
-              horizontal: 20,
-            ),
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                mainAxisSpacing: 10,
-                childAspectRatio: 0.8,
-                crossAxisSpacing: 10),
-            itemBuilder: (context, index) {
-              var _character = controller.getCharacterList[index];
-
-              return Stack(
-                children: [
-                  ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child:
-                          Container(child: Image.network(_character.image!))),
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: BackdropFilter(
-                      filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-                      child: Container(
-                        color: Colors.grey.withOpacity(0.1),
-                        alignment: Alignment.center,
-                      ),
-                    ),
-                  ),
-                  Stack(
-                    children: [
-                      Positioned(
-                        top: 0,
-                        right: 0,
-                        child: Container(
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.only(
-                                  topRight: Radius.circular(10),
-                                  bottomLeft: Radius.circular(10)),
-                              color: checkColor(_character.status!)),
-                          width: Get.size.width / 2 / 3,
-                          height: 20,
-                          alignment: Alignment.center,
-                          child: FittedBox(
-                              child: Padding(
-                            padding: const EdgeInsets.all(2.0),
-                            child: Text(
-                              _character.status!,
-                              style: TextStyle(color: Colors.white),
-                            ),
-                          )),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              _character.name!,
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.bold),
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            Text('${_character.species!}\n${_character.type}'),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                CircleAvatar(
-                                    radius: 35,
-                                    foregroundImage:
-                                        NetworkImage("${_character.image}")),
-                                Text("Alive")
-                              ],
-                            )
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              );
-            },
-          );
+          return characterGridWdiget();
         },
       ),
     );
   }
 
-  Color checkColor(String status) {
-    if (status == CharacterStatus.Alive.status) {
-      return CharacterStatus.Alive.colorDisplay;
-    } else if (status == CharacterStatus.Dead.status) {
-      return CharacterStatus.Dead.colorDisplay;
-    } else {
-      return CharacterStatus.unknown.colorDisplay;
-    }
+  SmartRefresher characterGridWdiget() {
+    return SmartRefresher(
+        enablePullDown: true,
+        enablePullUp: true,
+        footer: CustomFooter(
+          builder: (BuildContext context, LoadStatus? mode) {
+            Widget body;
+            if (mode == LoadStatus.idle) {
+              body = Text("pull up load");
+            } else if (mode == LoadStatus.loading) {
+              body = CupertinoActivityIndicator();
+            } else if (mode == LoadStatus.failed) {
+              body = Text("Load Failed!Click retry!");
+            } else if (mode == LoadStatus.canLoading) {
+              body = Text("release to load more");
+            } else {
+              body = Text("No more Data");
+            }
+            return Container(
+              height: 55.0,
+              child: Center(child: body),
+            );
+          },
+        ),
+        controller: _refreshController,
+        onRefresh: _onRefresh,
+        onLoading: () => _onLoading(controller.getCharacterData.info.next!),
+        child: CustomScrollView(slivers: [
+          SliverToBoxAdapter(
+            child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                child: PageTitle(title: "Characters")),
+          ),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+              child: TextFormField(
+                onTap: () {
+                  Get.toNamed((CharacterSearchPage.TAG));
+                },
+                readOnly: true,
+                decoration: InputDecoration(
+                  hintText: "Search Character",
+                  isDense: false,
+                  filled: true,
+                  fillColor: Colors.white,
+                  suffixIcon: Icon(Icons.search),
+                  border: OutlineInputBorder(
+                      gapPadding: 0, borderRadius: BorderRadius.circular(8)),
+                  contentPadding: EdgeInsets.symmetric(horizontal: 20),
+                ),
+              ),
+            ),
+          ),
+          SliverPadding(padding: EdgeInsets.symmetric(vertical: 10)),
+          SliverPadding(
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+            sliver: SliverGrid(
+              delegate: SliverChildBuilderDelegate(
+                (context, index) {
+                  return CharacterCardWidget(
+                      character: controller.getCharacterList[index]);
+                },
+                childCount: controller.getCharacterList.length,
+              ),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 10,
+                  childAspectRatio: 0.8,
+                  crossAxisSpacing: 10),
+            ),
+          ),
+        ]));
   }
 }

@@ -12,6 +12,12 @@ class CharacterController extends GetxController {
     this.characterReqRes.value = data;
   }
 
+  void addCharacterListData(CharacterReqRes data) {
+    this.characterReqRes.value.characterList..addAll(data.characterList);
+    this.characterReqRes.value =
+        this.characterReqRes.value.copyWith(info: data.info);
+  }
+
   CharacterReqRes get getCharacterData => this.characterReqRes.value;
 
   List<CharacterDataModel> get getCharacterList =>

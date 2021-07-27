@@ -12,7 +12,11 @@ class AppWidget extends StatelessWidget {
         title: 'Flutter Demo',
         getPages: getPages,
         theme: ThemeData(
-          appBarTheme: AppBarTheme(backgroundColor: Colors.white),
+          appBarTheme: AppBarTheme(
+              backgroundColor: Colors.white,
+              elevation: 0,
+              iconTheme: IconThemeData(color: Colors.black)),
+          scaffoldBackgroundColor: Colors.white,
           primarySwatch: Colors.blue,
         ),
         initialBinding: HomeBinding(),

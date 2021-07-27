@@ -34,10 +34,24 @@ class _$CharacterStateTearOff {
     );
   }
 
+  _OnLoadMoreCharacter onLoadMoreCharacter(
+      {required CharacterReqRes characterData}) {
+    return _OnLoadMoreCharacter(
+      characterData: characterData,
+    );
+  }
+
   _OnGetSingleCharacter onGetSingleCharacter(
       {required CharacterDataModel character}) {
     return _OnGetSingleCharacter(
       character: character,
+    );
+  }
+
+  _OnFilterCharacter onFilterCharacter(
+      {required CharacterReqRes characterData}) {
+    return _OnFilterCharacter(
+      characterData: characterData,
     );
   }
 }
@@ -53,8 +67,11 @@ mixin _$CharacterState {
     required TResult Function() onLoading,
     required TResult Function() onError,
     required TResult Function(CharacterReqRes characterData) onGetCharacter,
+    required TResult Function(CharacterReqRes characterData)
+        onLoadMoreCharacter,
     required TResult Function(CharacterDataModel character)
         onGetSingleCharacter,
+    required TResult Function(CharacterReqRes characterData) onFilterCharacter,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,7 +80,9 @@ mixin _$CharacterState {
     TResult Function()? onLoading,
     TResult Function()? onError,
     TResult Function(CharacterReqRes characterData)? onGetCharacter,
+    TResult Function(CharacterReqRes characterData)? onLoadMoreCharacter,
     TResult Function(CharacterDataModel character)? onGetSingleCharacter,
+    TResult Function(CharacterReqRes characterData)? onFilterCharacter,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -73,7 +92,9 @@ mixin _$CharacterState {
     required TResult Function(_OnLoading value) onLoading,
     required TResult Function(_OnError value) onError,
     required TResult Function(_OnGetCharacter value) onGetCharacter,
+    required TResult Function(_OnLoadMoreCharacter value) onLoadMoreCharacter,
     required TResult Function(_OnGetSingleCharacter value) onGetSingleCharacter,
+    required TResult Function(_OnFilterCharacter value) onFilterCharacter,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -82,7 +103,9 @@ mixin _$CharacterState {
     TResult Function(_OnLoading value)? onLoading,
     TResult Function(_OnError value)? onError,
     TResult Function(_OnGetCharacter value)? onGetCharacter,
+    TResult Function(_OnLoadMoreCharacter value)? onLoadMoreCharacter,
     TResult Function(_OnGetSingleCharacter value)? onGetSingleCharacter,
+    TResult Function(_OnFilterCharacter value)? onFilterCharacter,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -146,8 +169,11 @@ class _$_Initial implements _Initial {
     required TResult Function() onLoading,
     required TResult Function() onError,
     required TResult Function(CharacterReqRes characterData) onGetCharacter,
+    required TResult Function(CharacterReqRes characterData)
+        onLoadMoreCharacter,
     required TResult Function(CharacterDataModel character)
         onGetSingleCharacter,
+    required TResult Function(CharacterReqRes characterData) onFilterCharacter,
   }) {
     return initial();
   }
@@ -159,7 +185,9 @@ class _$_Initial implements _Initial {
     TResult Function()? onLoading,
     TResult Function()? onError,
     TResult Function(CharacterReqRes characterData)? onGetCharacter,
+    TResult Function(CharacterReqRes characterData)? onLoadMoreCharacter,
     TResult Function(CharacterDataModel character)? onGetSingleCharacter,
+    TResult Function(CharacterReqRes characterData)? onFilterCharacter,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -175,7 +203,9 @@ class _$_Initial implements _Initial {
     required TResult Function(_OnLoading value) onLoading,
     required TResult Function(_OnError value) onError,
     required TResult Function(_OnGetCharacter value) onGetCharacter,
+    required TResult Function(_OnLoadMoreCharacter value) onLoadMoreCharacter,
     required TResult Function(_OnGetSingleCharacter value) onGetSingleCharacter,
+    required TResult Function(_OnFilterCharacter value) onFilterCharacter,
   }) {
     return initial(this);
   }
@@ -187,7 +217,9 @@ class _$_Initial implements _Initial {
     TResult Function(_OnLoading value)? onLoading,
     TResult Function(_OnError value)? onError,
     TResult Function(_OnGetCharacter value)? onGetCharacter,
+    TResult Function(_OnLoadMoreCharacter value)? onLoadMoreCharacter,
     TResult Function(_OnGetSingleCharacter value)? onGetSingleCharacter,
+    TResult Function(_OnFilterCharacter value)? onFilterCharacter,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -243,8 +275,11 @@ class _$_OnLoading implements _OnLoading {
     required TResult Function() onLoading,
     required TResult Function() onError,
     required TResult Function(CharacterReqRes characterData) onGetCharacter,
+    required TResult Function(CharacterReqRes characterData)
+        onLoadMoreCharacter,
     required TResult Function(CharacterDataModel character)
         onGetSingleCharacter,
+    required TResult Function(CharacterReqRes characterData) onFilterCharacter,
   }) {
     return onLoading();
   }
@@ -256,7 +291,9 @@ class _$_OnLoading implements _OnLoading {
     TResult Function()? onLoading,
     TResult Function()? onError,
     TResult Function(CharacterReqRes characterData)? onGetCharacter,
+    TResult Function(CharacterReqRes characterData)? onLoadMoreCharacter,
     TResult Function(CharacterDataModel character)? onGetSingleCharacter,
+    TResult Function(CharacterReqRes characterData)? onFilterCharacter,
     required TResult orElse(),
   }) {
     if (onLoading != null) {
@@ -272,7 +309,9 @@ class _$_OnLoading implements _OnLoading {
     required TResult Function(_OnLoading value) onLoading,
     required TResult Function(_OnError value) onError,
     required TResult Function(_OnGetCharacter value) onGetCharacter,
+    required TResult Function(_OnLoadMoreCharacter value) onLoadMoreCharacter,
     required TResult Function(_OnGetSingleCharacter value) onGetSingleCharacter,
+    required TResult Function(_OnFilterCharacter value) onFilterCharacter,
   }) {
     return onLoading(this);
   }
@@ -284,7 +323,9 @@ class _$_OnLoading implements _OnLoading {
     TResult Function(_OnLoading value)? onLoading,
     TResult Function(_OnError value)? onError,
     TResult Function(_OnGetCharacter value)? onGetCharacter,
+    TResult Function(_OnLoadMoreCharacter value)? onLoadMoreCharacter,
     TResult Function(_OnGetSingleCharacter value)? onGetSingleCharacter,
+    TResult Function(_OnFilterCharacter value)? onFilterCharacter,
     required TResult orElse(),
   }) {
     if (onLoading != null) {
@@ -339,8 +380,11 @@ class _$_OnError implements _OnError {
     required TResult Function() onLoading,
     required TResult Function() onError,
     required TResult Function(CharacterReqRes characterData) onGetCharacter,
+    required TResult Function(CharacterReqRes characterData)
+        onLoadMoreCharacter,
     required TResult Function(CharacterDataModel character)
         onGetSingleCharacter,
+    required TResult Function(CharacterReqRes characterData) onFilterCharacter,
   }) {
     return onError();
   }
@@ -352,7 +396,9 @@ class _$_OnError implements _OnError {
     TResult Function()? onLoading,
     TResult Function()? onError,
     TResult Function(CharacterReqRes characterData)? onGetCharacter,
+    TResult Function(CharacterReqRes characterData)? onLoadMoreCharacter,
     TResult Function(CharacterDataModel character)? onGetSingleCharacter,
+    TResult Function(CharacterReqRes characterData)? onFilterCharacter,
     required TResult orElse(),
   }) {
     if (onError != null) {
@@ -368,7 +414,9 @@ class _$_OnError implements _OnError {
     required TResult Function(_OnLoading value) onLoading,
     required TResult Function(_OnError value) onError,
     required TResult Function(_OnGetCharacter value) onGetCharacter,
+    required TResult Function(_OnLoadMoreCharacter value) onLoadMoreCharacter,
     required TResult Function(_OnGetSingleCharacter value) onGetSingleCharacter,
+    required TResult Function(_OnFilterCharacter value) onFilterCharacter,
   }) {
     return onError(this);
   }
@@ -380,7 +428,9 @@ class _$_OnError implements _OnError {
     TResult Function(_OnLoading value)? onLoading,
     TResult Function(_OnError value)? onError,
     TResult Function(_OnGetCharacter value)? onGetCharacter,
+    TResult Function(_OnLoadMoreCharacter value)? onLoadMoreCharacter,
     TResult Function(_OnGetSingleCharacter value)? onGetSingleCharacter,
+    TResult Function(_OnFilterCharacter value)? onFilterCharacter,
     required TResult orElse(),
   }) {
     if (onError != null) {
@@ -473,8 +523,11 @@ class _$_OnGetCharacter implements _OnGetCharacter {
     required TResult Function() onLoading,
     required TResult Function() onError,
     required TResult Function(CharacterReqRes characterData) onGetCharacter,
+    required TResult Function(CharacterReqRes characterData)
+        onLoadMoreCharacter,
     required TResult Function(CharacterDataModel character)
         onGetSingleCharacter,
+    required TResult Function(CharacterReqRes characterData) onFilterCharacter,
   }) {
     return onGetCharacter(characterData);
   }
@@ -486,7 +539,9 @@ class _$_OnGetCharacter implements _OnGetCharacter {
     TResult Function()? onLoading,
     TResult Function()? onError,
     TResult Function(CharacterReqRes characterData)? onGetCharacter,
+    TResult Function(CharacterReqRes characterData)? onLoadMoreCharacter,
     TResult Function(CharacterDataModel character)? onGetSingleCharacter,
+    TResult Function(CharacterReqRes characterData)? onFilterCharacter,
     required TResult orElse(),
   }) {
     if (onGetCharacter != null) {
@@ -502,7 +557,9 @@ class _$_OnGetCharacter implements _OnGetCharacter {
     required TResult Function(_OnLoading value) onLoading,
     required TResult Function(_OnError value) onError,
     required TResult Function(_OnGetCharacter value) onGetCharacter,
+    required TResult Function(_OnLoadMoreCharacter value) onLoadMoreCharacter,
     required TResult Function(_OnGetSingleCharacter value) onGetSingleCharacter,
+    required TResult Function(_OnFilterCharacter value) onFilterCharacter,
   }) {
     return onGetCharacter(this);
   }
@@ -514,7 +571,9 @@ class _$_OnGetCharacter implements _OnGetCharacter {
     TResult Function(_OnLoading value)? onLoading,
     TResult Function(_OnError value)? onError,
     TResult Function(_OnGetCharacter value)? onGetCharacter,
+    TResult Function(_OnLoadMoreCharacter value)? onLoadMoreCharacter,
     TResult Function(_OnGetSingleCharacter value)? onGetSingleCharacter,
+    TResult Function(_OnFilterCharacter value)? onFilterCharacter,
     required TResult orElse(),
   }) {
     if (onGetCharacter != null) {
@@ -531,6 +590,156 @@ abstract class _OnGetCharacter implements CharacterState {
   CharacterReqRes get characterData => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$OnGetCharacterCopyWith<_OnGetCharacter> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$OnLoadMoreCharacterCopyWith<$Res> {
+  factory _$OnLoadMoreCharacterCopyWith(_OnLoadMoreCharacter value,
+          $Res Function(_OnLoadMoreCharacter) then) =
+      __$OnLoadMoreCharacterCopyWithImpl<$Res>;
+  $Res call({CharacterReqRes characterData});
+
+  $CharacterReqResCopyWith<$Res> get characterData;
+}
+
+/// @nodoc
+class __$OnLoadMoreCharacterCopyWithImpl<$Res>
+    extends _$CharacterStateCopyWithImpl<$Res>
+    implements _$OnLoadMoreCharacterCopyWith<$Res> {
+  __$OnLoadMoreCharacterCopyWithImpl(
+      _OnLoadMoreCharacter _value, $Res Function(_OnLoadMoreCharacter) _then)
+      : super(_value, (v) => _then(v as _OnLoadMoreCharacter));
+
+  @override
+  _OnLoadMoreCharacter get _value => super._value as _OnLoadMoreCharacter;
+
+  @override
+  $Res call({
+    Object? characterData = freezed,
+  }) {
+    return _then(_OnLoadMoreCharacter(
+      characterData: characterData == freezed
+          ? _value.characterData
+          : characterData // ignore: cast_nullable_to_non_nullable
+              as CharacterReqRes,
+    ));
+  }
+
+  @override
+  $CharacterReqResCopyWith<$Res> get characterData {
+    return $CharacterReqResCopyWith<$Res>(_value.characterData, (value) {
+      return _then(_value.copyWith(characterData: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_OnLoadMoreCharacter implements _OnLoadMoreCharacter {
+  const _$_OnLoadMoreCharacter({required this.characterData});
+
+  @override
+  final CharacterReqRes characterData;
+
+  @override
+  String toString() {
+    return 'CharacterState.onLoadMoreCharacter(characterData: $characterData)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _OnLoadMoreCharacter &&
+            (identical(other.characterData, characterData) ||
+                const DeepCollectionEquality()
+                    .equals(other.characterData, characterData)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(characterData);
+
+  @JsonKey(ignore: true)
+  @override
+  _$OnLoadMoreCharacterCopyWith<_OnLoadMoreCharacter> get copyWith =>
+      __$OnLoadMoreCharacterCopyWithImpl<_OnLoadMoreCharacter>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() onLoading,
+    required TResult Function() onError,
+    required TResult Function(CharacterReqRes characterData) onGetCharacter,
+    required TResult Function(CharacterReqRes characterData)
+        onLoadMoreCharacter,
+    required TResult Function(CharacterDataModel character)
+        onGetSingleCharacter,
+    required TResult Function(CharacterReqRes characterData) onFilterCharacter,
+  }) {
+    return onLoadMoreCharacter(characterData);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? onLoading,
+    TResult Function()? onError,
+    TResult Function(CharacterReqRes characterData)? onGetCharacter,
+    TResult Function(CharacterReqRes characterData)? onLoadMoreCharacter,
+    TResult Function(CharacterDataModel character)? onGetSingleCharacter,
+    TResult Function(CharacterReqRes characterData)? onFilterCharacter,
+    required TResult orElse(),
+  }) {
+    if (onLoadMoreCharacter != null) {
+      return onLoadMoreCharacter(characterData);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_OnLoading value) onLoading,
+    required TResult Function(_OnError value) onError,
+    required TResult Function(_OnGetCharacter value) onGetCharacter,
+    required TResult Function(_OnLoadMoreCharacter value) onLoadMoreCharacter,
+    required TResult Function(_OnGetSingleCharacter value) onGetSingleCharacter,
+    required TResult Function(_OnFilterCharacter value) onFilterCharacter,
+  }) {
+    return onLoadMoreCharacter(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OnLoading value)? onLoading,
+    TResult Function(_OnError value)? onError,
+    TResult Function(_OnGetCharacter value)? onGetCharacter,
+    TResult Function(_OnLoadMoreCharacter value)? onLoadMoreCharacter,
+    TResult Function(_OnGetSingleCharacter value)? onGetSingleCharacter,
+    TResult Function(_OnFilterCharacter value)? onFilterCharacter,
+    required TResult orElse(),
+  }) {
+    if (onLoadMoreCharacter != null) {
+      return onLoadMoreCharacter(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OnLoadMoreCharacter implements CharacterState {
+  const factory _OnLoadMoreCharacter({required CharacterReqRes characterData}) =
+      _$_OnLoadMoreCharacter;
+
+  CharacterReqRes get characterData => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$OnLoadMoreCharacterCopyWith<_OnLoadMoreCharacter> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -614,8 +823,11 @@ class _$_OnGetSingleCharacter implements _OnGetSingleCharacter {
     required TResult Function() onLoading,
     required TResult Function() onError,
     required TResult Function(CharacterReqRes characterData) onGetCharacter,
+    required TResult Function(CharacterReqRes characterData)
+        onLoadMoreCharacter,
     required TResult Function(CharacterDataModel character)
         onGetSingleCharacter,
+    required TResult Function(CharacterReqRes characterData) onFilterCharacter,
   }) {
     return onGetSingleCharacter(character);
   }
@@ -627,7 +839,9 @@ class _$_OnGetSingleCharacter implements _OnGetSingleCharacter {
     TResult Function()? onLoading,
     TResult Function()? onError,
     TResult Function(CharacterReqRes characterData)? onGetCharacter,
+    TResult Function(CharacterReqRes characterData)? onLoadMoreCharacter,
     TResult Function(CharacterDataModel character)? onGetSingleCharacter,
+    TResult Function(CharacterReqRes characterData)? onFilterCharacter,
     required TResult orElse(),
   }) {
     if (onGetSingleCharacter != null) {
@@ -643,7 +857,9 @@ class _$_OnGetSingleCharacter implements _OnGetSingleCharacter {
     required TResult Function(_OnLoading value) onLoading,
     required TResult Function(_OnError value) onError,
     required TResult Function(_OnGetCharacter value) onGetCharacter,
+    required TResult Function(_OnLoadMoreCharacter value) onLoadMoreCharacter,
     required TResult Function(_OnGetSingleCharacter value) onGetSingleCharacter,
+    required TResult Function(_OnFilterCharacter value) onFilterCharacter,
   }) {
     return onGetSingleCharacter(this);
   }
@@ -655,7 +871,9 @@ class _$_OnGetSingleCharacter implements _OnGetSingleCharacter {
     TResult Function(_OnLoading value)? onLoading,
     TResult Function(_OnError value)? onError,
     TResult Function(_OnGetCharacter value)? onGetCharacter,
+    TResult Function(_OnLoadMoreCharacter value)? onLoadMoreCharacter,
     TResult Function(_OnGetSingleCharacter value)? onGetSingleCharacter,
+    TResult Function(_OnFilterCharacter value)? onFilterCharacter,
     required TResult orElse(),
   }) {
     if (onGetSingleCharacter != null) {
@@ -672,5 +890,154 @@ abstract class _OnGetSingleCharacter implements CharacterState {
   CharacterDataModel get character => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$OnGetSingleCharacterCopyWith<_OnGetSingleCharacter> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$OnFilterCharacterCopyWith<$Res> {
+  factory _$OnFilterCharacterCopyWith(
+          _OnFilterCharacter value, $Res Function(_OnFilterCharacter) then) =
+      __$OnFilterCharacterCopyWithImpl<$Res>;
+  $Res call({CharacterReqRes characterData});
+
+  $CharacterReqResCopyWith<$Res> get characterData;
+}
+
+/// @nodoc
+class __$OnFilterCharacterCopyWithImpl<$Res>
+    extends _$CharacterStateCopyWithImpl<$Res>
+    implements _$OnFilterCharacterCopyWith<$Res> {
+  __$OnFilterCharacterCopyWithImpl(
+      _OnFilterCharacter _value, $Res Function(_OnFilterCharacter) _then)
+      : super(_value, (v) => _then(v as _OnFilterCharacter));
+
+  @override
+  _OnFilterCharacter get _value => super._value as _OnFilterCharacter;
+
+  @override
+  $Res call({
+    Object? characterData = freezed,
+  }) {
+    return _then(_OnFilterCharacter(
+      characterData: characterData == freezed
+          ? _value.characterData
+          : characterData // ignore: cast_nullable_to_non_nullable
+              as CharacterReqRes,
+    ));
+  }
+
+  @override
+  $CharacterReqResCopyWith<$Res> get characterData {
+    return $CharacterReqResCopyWith<$Res>(_value.characterData, (value) {
+      return _then(_value.copyWith(characterData: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_OnFilterCharacter implements _OnFilterCharacter {
+  const _$_OnFilterCharacter({required this.characterData});
+
+  @override
+  final CharacterReqRes characterData;
+
+  @override
+  String toString() {
+    return 'CharacterState.onFilterCharacter(characterData: $characterData)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _OnFilterCharacter &&
+            (identical(other.characterData, characterData) ||
+                const DeepCollectionEquality()
+                    .equals(other.characterData, characterData)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(characterData);
+
+  @JsonKey(ignore: true)
+  @override
+  _$OnFilterCharacterCopyWith<_OnFilterCharacter> get copyWith =>
+      __$OnFilterCharacterCopyWithImpl<_OnFilterCharacter>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() onLoading,
+    required TResult Function() onError,
+    required TResult Function(CharacterReqRes characterData) onGetCharacter,
+    required TResult Function(CharacterReqRes characterData)
+        onLoadMoreCharacter,
+    required TResult Function(CharacterDataModel character)
+        onGetSingleCharacter,
+    required TResult Function(CharacterReqRes characterData) onFilterCharacter,
+  }) {
+    return onFilterCharacter(characterData);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? onLoading,
+    TResult Function()? onError,
+    TResult Function(CharacterReqRes characterData)? onGetCharacter,
+    TResult Function(CharacterReqRes characterData)? onLoadMoreCharacter,
+    TResult Function(CharacterDataModel character)? onGetSingleCharacter,
+    TResult Function(CharacterReqRes characterData)? onFilterCharacter,
+    required TResult orElse(),
+  }) {
+    if (onFilterCharacter != null) {
+      return onFilterCharacter(characterData);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_OnLoading value) onLoading,
+    required TResult Function(_OnError value) onError,
+    required TResult Function(_OnGetCharacter value) onGetCharacter,
+    required TResult Function(_OnLoadMoreCharacter value) onLoadMoreCharacter,
+    required TResult Function(_OnGetSingleCharacter value) onGetSingleCharacter,
+    required TResult Function(_OnFilterCharacter value) onFilterCharacter,
+  }) {
+    return onFilterCharacter(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OnLoading value)? onLoading,
+    TResult Function(_OnError value)? onError,
+    TResult Function(_OnGetCharacter value)? onGetCharacter,
+    TResult Function(_OnLoadMoreCharacter value)? onLoadMoreCharacter,
+    TResult Function(_OnGetSingleCharacter value)? onGetSingleCharacter,
+    TResult Function(_OnFilterCharacter value)? onFilterCharacter,
+    required TResult orElse(),
+  }) {
+    if (onFilterCharacter != null) {
+      return onFilterCharacter(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OnFilterCharacter implements CharacterState {
+  const factory _OnFilterCharacter({required CharacterReqRes characterData}) =
+      _$_OnFilterCharacter;
+
+  CharacterReqRes get characterData => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$OnFilterCharacterCopyWith<_OnFilterCharacter> get copyWith =>
       throw _privateConstructorUsedError;
 }
