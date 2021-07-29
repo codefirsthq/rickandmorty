@@ -9,6 +9,8 @@ import '../../failures/failure_data_model.dart';
 abstract class ICharacterFacade {
   Future<Either<FailureDataModel, CharacterReqRes>> getAllCharacters();
   Future<Either<FailureDataModel, CharacterDataModel>> getCharacter(String url);
+  Future<Either<FailureDataModel, List<CharacterDataModel>>>
+      getMultipleCharacter(List<String> urls);
   Future<Either<FailureDataModel, CharacterReqRes>> searchCharacter(
       CharacterFilterRequest keywoard);
   Future<Either<FailureDataModel, CharacterReqRes>> loadMoreCharacter(

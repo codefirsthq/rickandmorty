@@ -33,6 +33,25 @@ class _$EpisodeStateTearOff {
       episodeReqRes: episodeReqRes,
     );
   }
+
+  _OnLoadMoreEpisode onLoadMoreEpisode({required EpisodeReqRes episodeReqRes}) {
+    return _OnLoadMoreEpisode(
+      episodeReqRes: episodeReqRes,
+    );
+  }
+
+  _OnGetMultipleEpisode onGetMultipleEpisode(
+      {required List<EpisodeDataModel> listEpisode}) {
+    return _OnGetMultipleEpisode(
+      listEpisode: listEpisode,
+    );
+  }
+
+  _OnErrorLoadMore onErrorLoadMore(FailureDataModel? error) {
+    return _OnErrorLoadMore(
+      error,
+    );
+  }
 }
 
 /// @nodoc
@@ -46,6 +65,10 @@ mixin _$EpisodeState {
     required TResult Function() onLoading,
     required TResult Function() onError,
     required TResult Function(EpisodeReqRes episodeReqRes) onGetEpisode,
+    required TResult Function(EpisodeReqRes episodeReqRes) onLoadMoreEpisode,
+    required TResult Function(List<EpisodeDataModel> listEpisode)
+        onGetMultipleEpisode,
+    required TResult Function(FailureDataModel? error) onErrorLoadMore,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -54,6 +77,9 @@ mixin _$EpisodeState {
     TResult Function()? onLoading,
     TResult Function()? onError,
     TResult Function(EpisodeReqRes episodeReqRes)? onGetEpisode,
+    TResult Function(EpisodeReqRes episodeReqRes)? onLoadMoreEpisode,
+    TResult Function(List<EpisodeDataModel> listEpisode)? onGetMultipleEpisode,
+    TResult Function(FailureDataModel? error)? onErrorLoadMore,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -63,6 +89,9 @@ mixin _$EpisodeState {
     required TResult Function(_OnLoading value) onLoading,
     required TResult Function(_OnError value) onError,
     required TResult Function(_OnGetEpisode value) onGetEpisode,
+    required TResult Function(_OnLoadMoreEpisode value) onLoadMoreEpisode,
+    required TResult Function(_OnGetMultipleEpisode value) onGetMultipleEpisode,
+    required TResult Function(_OnErrorLoadMore value) onErrorLoadMore,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -71,6 +100,9 @@ mixin _$EpisodeState {
     TResult Function(_OnLoading value)? onLoading,
     TResult Function(_OnError value)? onError,
     TResult Function(_OnGetEpisode value)? onGetEpisode,
+    TResult Function(_OnLoadMoreEpisode value)? onLoadMoreEpisode,
+    TResult Function(_OnGetMultipleEpisode value)? onGetMultipleEpisode,
+    TResult Function(_OnErrorLoadMore value)? onErrorLoadMore,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -133,6 +165,10 @@ class _$_Initial implements _Initial {
     required TResult Function() onLoading,
     required TResult Function() onError,
     required TResult Function(EpisodeReqRes episodeReqRes) onGetEpisode,
+    required TResult Function(EpisodeReqRes episodeReqRes) onLoadMoreEpisode,
+    required TResult Function(List<EpisodeDataModel> listEpisode)
+        onGetMultipleEpisode,
+    required TResult Function(FailureDataModel? error) onErrorLoadMore,
   }) {
     return initial();
   }
@@ -144,6 +180,9 @@ class _$_Initial implements _Initial {
     TResult Function()? onLoading,
     TResult Function()? onError,
     TResult Function(EpisodeReqRes episodeReqRes)? onGetEpisode,
+    TResult Function(EpisodeReqRes episodeReqRes)? onLoadMoreEpisode,
+    TResult Function(List<EpisodeDataModel> listEpisode)? onGetMultipleEpisode,
+    TResult Function(FailureDataModel? error)? onErrorLoadMore,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -159,6 +198,9 @@ class _$_Initial implements _Initial {
     required TResult Function(_OnLoading value) onLoading,
     required TResult Function(_OnError value) onError,
     required TResult Function(_OnGetEpisode value) onGetEpisode,
+    required TResult Function(_OnLoadMoreEpisode value) onLoadMoreEpisode,
+    required TResult Function(_OnGetMultipleEpisode value) onGetMultipleEpisode,
+    required TResult Function(_OnErrorLoadMore value) onErrorLoadMore,
   }) {
     return initial(this);
   }
@@ -170,6 +212,9 @@ class _$_Initial implements _Initial {
     TResult Function(_OnLoading value)? onLoading,
     TResult Function(_OnError value)? onError,
     TResult Function(_OnGetEpisode value)? onGetEpisode,
+    TResult Function(_OnLoadMoreEpisode value)? onLoadMoreEpisode,
+    TResult Function(_OnGetMultipleEpisode value)? onGetMultipleEpisode,
+    TResult Function(_OnErrorLoadMore value)? onErrorLoadMore,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -225,6 +270,10 @@ class _$_OnLoading implements _OnLoading {
     required TResult Function() onLoading,
     required TResult Function() onError,
     required TResult Function(EpisodeReqRes episodeReqRes) onGetEpisode,
+    required TResult Function(EpisodeReqRes episodeReqRes) onLoadMoreEpisode,
+    required TResult Function(List<EpisodeDataModel> listEpisode)
+        onGetMultipleEpisode,
+    required TResult Function(FailureDataModel? error) onErrorLoadMore,
   }) {
     return onLoading();
   }
@@ -236,6 +285,9 @@ class _$_OnLoading implements _OnLoading {
     TResult Function()? onLoading,
     TResult Function()? onError,
     TResult Function(EpisodeReqRes episodeReqRes)? onGetEpisode,
+    TResult Function(EpisodeReqRes episodeReqRes)? onLoadMoreEpisode,
+    TResult Function(List<EpisodeDataModel> listEpisode)? onGetMultipleEpisode,
+    TResult Function(FailureDataModel? error)? onErrorLoadMore,
     required TResult orElse(),
   }) {
     if (onLoading != null) {
@@ -251,6 +303,9 @@ class _$_OnLoading implements _OnLoading {
     required TResult Function(_OnLoading value) onLoading,
     required TResult Function(_OnError value) onError,
     required TResult Function(_OnGetEpisode value) onGetEpisode,
+    required TResult Function(_OnLoadMoreEpisode value) onLoadMoreEpisode,
+    required TResult Function(_OnGetMultipleEpisode value) onGetMultipleEpisode,
+    required TResult Function(_OnErrorLoadMore value) onErrorLoadMore,
   }) {
     return onLoading(this);
   }
@@ -262,6 +317,9 @@ class _$_OnLoading implements _OnLoading {
     TResult Function(_OnLoading value)? onLoading,
     TResult Function(_OnError value)? onError,
     TResult Function(_OnGetEpisode value)? onGetEpisode,
+    TResult Function(_OnLoadMoreEpisode value)? onLoadMoreEpisode,
+    TResult Function(_OnGetMultipleEpisode value)? onGetMultipleEpisode,
+    TResult Function(_OnErrorLoadMore value)? onErrorLoadMore,
     required TResult orElse(),
   }) {
     if (onLoading != null) {
@@ -316,6 +374,10 @@ class _$_OnError implements _OnError {
     required TResult Function() onLoading,
     required TResult Function() onError,
     required TResult Function(EpisodeReqRes episodeReqRes) onGetEpisode,
+    required TResult Function(EpisodeReqRes episodeReqRes) onLoadMoreEpisode,
+    required TResult Function(List<EpisodeDataModel> listEpisode)
+        onGetMultipleEpisode,
+    required TResult Function(FailureDataModel? error) onErrorLoadMore,
   }) {
     return onError();
   }
@@ -327,6 +389,9 @@ class _$_OnError implements _OnError {
     TResult Function()? onLoading,
     TResult Function()? onError,
     TResult Function(EpisodeReqRes episodeReqRes)? onGetEpisode,
+    TResult Function(EpisodeReqRes episodeReqRes)? onLoadMoreEpisode,
+    TResult Function(List<EpisodeDataModel> listEpisode)? onGetMultipleEpisode,
+    TResult Function(FailureDataModel? error)? onErrorLoadMore,
     required TResult orElse(),
   }) {
     if (onError != null) {
@@ -342,6 +407,9 @@ class _$_OnError implements _OnError {
     required TResult Function(_OnLoading value) onLoading,
     required TResult Function(_OnError value) onError,
     required TResult Function(_OnGetEpisode value) onGetEpisode,
+    required TResult Function(_OnLoadMoreEpisode value) onLoadMoreEpisode,
+    required TResult Function(_OnGetMultipleEpisode value) onGetMultipleEpisode,
+    required TResult Function(_OnErrorLoadMore value) onErrorLoadMore,
   }) {
     return onError(this);
   }
@@ -353,6 +421,9 @@ class _$_OnError implements _OnError {
     TResult Function(_OnLoading value)? onLoading,
     TResult Function(_OnError value)? onError,
     TResult Function(_OnGetEpisode value)? onGetEpisode,
+    TResult Function(_OnLoadMoreEpisode value)? onLoadMoreEpisode,
+    TResult Function(_OnGetMultipleEpisode value)? onGetMultipleEpisode,
+    TResult Function(_OnErrorLoadMore value)? onErrorLoadMore,
     required TResult orElse(),
   }) {
     if (onError != null) {
@@ -444,6 +515,10 @@ class _$_OnGetEpisode implements _OnGetEpisode {
     required TResult Function() onLoading,
     required TResult Function() onError,
     required TResult Function(EpisodeReqRes episodeReqRes) onGetEpisode,
+    required TResult Function(EpisodeReqRes episodeReqRes) onLoadMoreEpisode,
+    required TResult Function(List<EpisodeDataModel> listEpisode)
+        onGetMultipleEpisode,
+    required TResult Function(FailureDataModel? error) onErrorLoadMore,
   }) {
     return onGetEpisode(episodeReqRes);
   }
@@ -455,6 +530,9 @@ class _$_OnGetEpisode implements _OnGetEpisode {
     TResult Function()? onLoading,
     TResult Function()? onError,
     TResult Function(EpisodeReqRes episodeReqRes)? onGetEpisode,
+    TResult Function(EpisodeReqRes episodeReqRes)? onLoadMoreEpisode,
+    TResult Function(List<EpisodeDataModel> listEpisode)? onGetMultipleEpisode,
+    TResult Function(FailureDataModel? error)? onErrorLoadMore,
     required TResult orElse(),
   }) {
     if (onGetEpisode != null) {
@@ -470,6 +548,9 @@ class _$_OnGetEpisode implements _OnGetEpisode {
     required TResult Function(_OnLoading value) onLoading,
     required TResult Function(_OnError value) onError,
     required TResult Function(_OnGetEpisode value) onGetEpisode,
+    required TResult Function(_OnLoadMoreEpisode value) onLoadMoreEpisode,
+    required TResult Function(_OnGetMultipleEpisode value) onGetMultipleEpisode,
+    required TResult Function(_OnErrorLoadMore value) onErrorLoadMore,
   }) {
     return onGetEpisode(this);
   }
@@ -481,6 +562,9 @@ class _$_OnGetEpisode implements _OnGetEpisode {
     TResult Function(_OnLoading value)? onLoading,
     TResult Function(_OnError value)? onError,
     TResult Function(_OnGetEpisode value)? onGetEpisode,
+    TResult Function(_OnLoadMoreEpisode value)? onLoadMoreEpisode,
+    TResult Function(_OnGetMultipleEpisode value)? onGetMultipleEpisode,
+    TResult Function(_OnErrorLoadMore value)? onErrorLoadMore,
     required TResult orElse(),
   }) {
     if (onGetEpisode != null) {
@@ -497,5 +581,443 @@ abstract class _OnGetEpisode implements EpisodeState {
   EpisodeReqRes get episodeReqRes => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$OnGetEpisodeCopyWith<_OnGetEpisode> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$OnLoadMoreEpisodeCopyWith<$Res> {
+  factory _$OnLoadMoreEpisodeCopyWith(
+          _OnLoadMoreEpisode value, $Res Function(_OnLoadMoreEpisode) then) =
+      __$OnLoadMoreEpisodeCopyWithImpl<$Res>;
+  $Res call({EpisodeReqRes episodeReqRes});
+
+  $EpisodeReqResCopyWith<$Res> get episodeReqRes;
+}
+
+/// @nodoc
+class __$OnLoadMoreEpisodeCopyWithImpl<$Res>
+    extends _$EpisodeStateCopyWithImpl<$Res>
+    implements _$OnLoadMoreEpisodeCopyWith<$Res> {
+  __$OnLoadMoreEpisodeCopyWithImpl(
+      _OnLoadMoreEpisode _value, $Res Function(_OnLoadMoreEpisode) _then)
+      : super(_value, (v) => _then(v as _OnLoadMoreEpisode));
+
+  @override
+  _OnLoadMoreEpisode get _value => super._value as _OnLoadMoreEpisode;
+
+  @override
+  $Res call({
+    Object? episodeReqRes = freezed,
+  }) {
+    return _then(_OnLoadMoreEpisode(
+      episodeReqRes: episodeReqRes == freezed
+          ? _value.episodeReqRes
+          : episodeReqRes // ignore: cast_nullable_to_non_nullable
+              as EpisodeReqRes,
+    ));
+  }
+
+  @override
+  $EpisodeReqResCopyWith<$Res> get episodeReqRes {
+    return $EpisodeReqResCopyWith<$Res>(_value.episodeReqRes, (value) {
+      return _then(_value.copyWith(episodeReqRes: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_OnLoadMoreEpisode implements _OnLoadMoreEpisode {
+  const _$_OnLoadMoreEpisode({required this.episodeReqRes});
+
+  @override
+  final EpisodeReqRes episodeReqRes;
+
+  @override
+  String toString() {
+    return 'EpisodeState.onLoadMoreEpisode(episodeReqRes: $episodeReqRes)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _OnLoadMoreEpisode &&
+            (identical(other.episodeReqRes, episodeReqRes) ||
+                const DeepCollectionEquality()
+                    .equals(other.episodeReqRes, episodeReqRes)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(episodeReqRes);
+
+  @JsonKey(ignore: true)
+  @override
+  _$OnLoadMoreEpisodeCopyWith<_OnLoadMoreEpisode> get copyWith =>
+      __$OnLoadMoreEpisodeCopyWithImpl<_OnLoadMoreEpisode>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() onLoading,
+    required TResult Function() onError,
+    required TResult Function(EpisodeReqRes episodeReqRes) onGetEpisode,
+    required TResult Function(EpisodeReqRes episodeReqRes) onLoadMoreEpisode,
+    required TResult Function(List<EpisodeDataModel> listEpisode)
+        onGetMultipleEpisode,
+    required TResult Function(FailureDataModel? error) onErrorLoadMore,
+  }) {
+    return onLoadMoreEpisode(episodeReqRes);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? onLoading,
+    TResult Function()? onError,
+    TResult Function(EpisodeReqRes episodeReqRes)? onGetEpisode,
+    TResult Function(EpisodeReqRes episodeReqRes)? onLoadMoreEpisode,
+    TResult Function(List<EpisodeDataModel> listEpisode)? onGetMultipleEpisode,
+    TResult Function(FailureDataModel? error)? onErrorLoadMore,
+    required TResult orElse(),
+  }) {
+    if (onLoadMoreEpisode != null) {
+      return onLoadMoreEpisode(episodeReqRes);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_OnLoading value) onLoading,
+    required TResult Function(_OnError value) onError,
+    required TResult Function(_OnGetEpisode value) onGetEpisode,
+    required TResult Function(_OnLoadMoreEpisode value) onLoadMoreEpisode,
+    required TResult Function(_OnGetMultipleEpisode value) onGetMultipleEpisode,
+    required TResult Function(_OnErrorLoadMore value) onErrorLoadMore,
+  }) {
+    return onLoadMoreEpisode(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OnLoading value)? onLoading,
+    TResult Function(_OnError value)? onError,
+    TResult Function(_OnGetEpisode value)? onGetEpisode,
+    TResult Function(_OnLoadMoreEpisode value)? onLoadMoreEpisode,
+    TResult Function(_OnGetMultipleEpisode value)? onGetMultipleEpisode,
+    TResult Function(_OnErrorLoadMore value)? onErrorLoadMore,
+    required TResult orElse(),
+  }) {
+    if (onLoadMoreEpisode != null) {
+      return onLoadMoreEpisode(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OnLoadMoreEpisode implements EpisodeState {
+  const factory _OnLoadMoreEpisode({required EpisodeReqRes episodeReqRes}) =
+      _$_OnLoadMoreEpisode;
+
+  EpisodeReqRes get episodeReqRes => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$OnLoadMoreEpisodeCopyWith<_OnLoadMoreEpisode> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$OnGetMultipleEpisodeCopyWith<$Res> {
+  factory _$OnGetMultipleEpisodeCopyWith(_OnGetMultipleEpisode value,
+          $Res Function(_OnGetMultipleEpisode) then) =
+      __$OnGetMultipleEpisodeCopyWithImpl<$Res>;
+  $Res call({List<EpisodeDataModel> listEpisode});
+}
+
+/// @nodoc
+class __$OnGetMultipleEpisodeCopyWithImpl<$Res>
+    extends _$EpisodeStateCopyWithImpl<$Res>
+    implements _$OnGetMultipleEpisodeCopyWith<$Res> {
+  __$OnGetMultipleEpisodeCopyWithImpl(
+      _OnGetMultipleEpisode _value, $Res Function(_OnGetMultipleEpisode) _then)
+      : super(_value, (v) => _then(v as _OnGetMultipleEpisode));
+
+  @override
+  _OnGetMultipleEpisode get _value => super._value as _OnGetMultipleEpisode;
+
+  @override
+  $Res call({
+    Object? listEpisode = freezed,
+  }) {
+    return _then(_OnGetMultipleEpisode(
+      listEpisode: listEpisode == freezed
+          ? _value.listEpisode
+          : listEpisode // ignore: cast_nullable_to_non_nullable
+              as List<EpisodeDataModel>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_OnGetMultipleEpisode implements _OnGetMultipleEpisode {
+  const _$_OnGetMultipleEpisode({required this.listEpisode});
+
+  @override
+  final List<EpisodeDataModel> listEpisode;
+
+  @override
+  String toString() {
+    return 'EpisodeState.onGetMultipleEpisode(listEpisode: $listEpisode)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _OnGetMultipleEpisode &&
+            (identical(other.listEpisode, listEpisode) ||
+                const DeepCollectionEquality()
+                    .equals(other.listEpisode, listEpisode)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(listEpisode);
+
+  @JsonKey(ignore: true)
+  @override
+  _$OnGetMultipleEpisodeCopyWith<_OnGetMultipleEpisode> get copyWith =>
+      __$OnGetMultipleEpisodeCopyWithImpl<_OnGetMultipleEpisode>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() onLoading,
+    required TResult Function() onError,
+    required TResult Function(EpisodeReqRes episodeReqRes) onGetEpisode,
+    required TResult Function(EpisodeReqRes episodeReqRes) onLoadMoreEpisode,
+    required TResult Function(List<EpisodeDataModel> listEpisode)
+        onGetMultipleEpisode,
+    required TResult Function(FailureDataModel? error) onErrorLoadMore,
+  }) {
+    return onGetMultipleEpisode(listEpisode);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? onLoading,
+    TResult Function()? onError,
+    TResult Function(EpisodeReqRes episodeReqRes)? onGetEpisode,
+    TResult Function(EpisodeReqRes episodeReqRes)? onLoadMoreEpisode,
+    TResult Function(List<EpisodeDataModel> listEpisode)? onGetMultipleEpisode,
+    TResult Function(FailureDataModel? error)? onErrorLoadMore,
+    required TResult orElse(),
+  }) {
+    if (onGetMultipleEpisode != null) {
+      return onGetMultipleEpisode(listEpisode);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_OnLoading value) onLoading,
+    required TResult Function(_OnError value) onError,
+    required TResult Function(_OnGetEpisode value) onGetEpisode,
+    required TResult Function(_OnLoadMoreEpisode value) onLoadMoreEpisode,
+    required TResult Function(_OnGetMultipleEpisode value) onGetMultipleEpisode,
+    required TResult Function(_OnErrorLoadMore value) onErrorLoadMore,
+  }) {
+    return onGetMultipleEpisode(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OnLoading value)? onLoading,
+    TResult Function(_OnError value)? onError,
+    TResult Function(_OnGetEpisode value)? onGetEpisode,
+    TResult Function(_OnLoadMoreEpisode value)? onLoadMoreEpisode,
+    TResult Function(_OnGetMultipleEpisode value)? onGetMultipleEpisode,
+    TResult Function(_OnErrorLoadMore value)? onErrorLoadMore,
+    required TResult orElse(),
+  }) {
+    if (onGetMultipleEpisode != null) {
+      return onGetMultipleEpisode(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OnGetMultipleEpisode implements EpisodeState {
+  const factory _OnGetMultipleEpisode(
+      {required List<EpisodeDataModel> listEpisode}) = _$_OnGetMultipleEpisode;
+
+  List<EpisodeDataModel> get listEpisode => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$OnGetMultipleEpisodeCopyWith<_OnGetMultipleEpisode> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$OnErrorLoadMoreCopyWith<$Res> {
+  factory _$OnErrorLoadMoreCopyWith(
+          _OnErrorLoadMore value, $Res Function(_OnErrorLoadMore) then) =
+      __$OnErrorLoadMoreCopyWithImpl<$Res>;
+  $Res call({FailureDataModel? error});
+
+  $FailureDataModelCopyWith<$Res>? get error;
+}
+
+/// @nodoc
+class __$OnErrorLoadMoreCopyWithImpl<$Res>
+    extends _$EpisodeStateCopyWithImpl<$Res>
+    implements _$OnErrorLoadMoreCopyWith<$Res> {
+  __$OnErrorLoadMoreCopyWithImpl(
+      _OnErrorLoadMore _value, $Res Function(_OnErrorLoadMore) _then)
+      : super(_value, (v) => _then(v as _OnErrorLoadMore));
+
+  @override
+  _OnErrorLoadMore get _value => super._value as _OnErrorLoadMore;
+
+  @override
+  $Res call({
+    Object? error = freezed,
+  }) {
+    return _then(_OnErrorLoadMore(
+      error == freezed
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as FailureDataModel?,
+    ));
+  }
+
+  @override
+  $FailureDataModelCopyWith<$Res>? get error {
+    if (_value.error == null) {
+      return null;
+    }
+
+    return $FailureDataModelCopyWith<$Res>(_value.error!, (value) {
+      return _then(_value.copyWith(error: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_OnErrorLoadMore implements _OnErrorLoadMore {
+  const _$_OnErrorLoadMore(this.error);
+
+  @override
+  final FailureDataModel? error;
+
+  @override
+  String toString() {
+    return 'EpisodeState.onErrorLoadMore(error: $error)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _OnErrorLoadMore &&
+            (identical(other.error, error) ||
+                const DeepCollectionEquality().equals(other.error, error)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
+
+  @JsonKey(ignore: true)
+  @override
+  _$OnErrorLoadMoreCopyWith<_OnErrorLoadMore> get copyWith =>
+      __$OnErrorLoadMoreCopyWithImpl<_OnErrorLoadMore>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() onLoading,
+    required TResult Function() onError,
+    required TResult Function(EpisodeReqRes episodeReqRes) onGetEpisode,
+    required TResult Function(EpisodeReqRes episodeReqRes) onLoadMoreEpisode,
+    required TResult Function(List<EpisodeDataModel> listEpisode)
+        onGetMultipleEpisode,
+    required TResult Function(FailureDataModel? error) onErrorLoadMore,
+  }) {
+    return onErrorLoadMore(error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? onLoading,
+    TResult Function()? onError,
+    TResult Function(EpisodeReqRes episodeReqRes)? onGetEpisode,
+    TResult Function(EpisodeReqRes episodeReqRes)? onLoadMoreEpisode,
+    TResult Function(List<EpisodeDataModel> listEpisode)? onGetMultipleEpisode,
+    TResult Function(FailureDataModel? error)? onErrorLoadMore,
+    required TResult orElse(),
+  }) {
+    if (onErrorLoadMore != null) {
+      return onErrorLoadMore(error);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_OnLoading value) onLoading,
+    required TResult Function(_OnError value) onError,
+    required TResult Function(_OnGetEpisode value) onGetEpisode,
+    required TResult Function(_OnLoadMoreEpisode value) onLoadMoreEpisode,
+    required TResult Function(_OnGetMultipleEpisode value) onGetMultipleEpisode,
+    required TResult Function(_OnErrorLoadMore value) onErrorLoadMore,
+  }) {
+    return onErrorLoadMore(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OnLoading value)? onLoading,
+    TResult Function(_OnError value)? onError,
+    TResult Function(_OnGetEpisode value)? onGetEpisode,
+    TResult Function(_OnLoadMoreEpisode value)? onLoadMoreEpisode,
+    TResult Function(_OnGetMultipleEpisode value)? onGetMultipleEpisode,
+    TResult Function(_OnErrorLoadMore value)? onErrorLoadMore,
+    required TResult orElse(),
+  }) {
+    if (onErrorLoadMore != null) {
+      return onErrorLoadMore(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OnErrorLoadMore implements EpisodeState {
+  const factory _OnErrorLoadMore(FailureDataModel? error) = _$_OnErrorLoadMore;
+
+  FailureDataModel? get error => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$OnErrorLoadMoreCopyWith<_OnErrorLoadMore> get copyWith =>
       throw _privateConstructorUsedError;
 }

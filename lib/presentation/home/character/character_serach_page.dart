@@ -33,52 +33,52 @@ class _CharacterSearchPageState extends State<CharacterSearchPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: SafeArea(
-        child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(height: 10),
-              Text(
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 15),
+        child: CustomScrollView(
+          physics: BouncingScrollPhysics(),
+          slivers: [
+            SliverToBoxAdapter(
+              child: Text(
                 "Find Character",
                 style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
               ),
-              SizedBox(height: 20),
-              Expanded(
-                child: BlocProvider(
-                  create: (context) => characterCubit,
-                  child: BlocConsumer<CharacterCubit, CharacterState>(
-                    listener: (context, state) {
-                      // TODO: implement listener
-                    },
-                    builder: (context, state) {
-                      return state.maybeMap(orElse: () {
-                        return Container();
-                      }, onLoading: (e) {
-                        return Center(child: CircularProgressIndicator());
-                      }, onFilterCharacter: (e) {
-                        return GridView.builder(
-                          itemCount: e.characterData.characterList.length,
-                          itemBuilder: (context, index) {
-                            return CharacterCardWidget(
-                                character:
-                                    e.characterData.characterList[index]);
-                          },
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 2,
-                                  mainAxisSpacing: 10,
-                                  childAspectRatio: 0.8,
-                                  crossAxisSpacing: 10),
-                        );
-                      });
-                    },
-                  ),
+            ),
+            SliverPadding(padding: EdgeInsets.only(top: 20)),
+            SliverToBoxAdapter(
+              child: BlocProvider(
+                create: (context) => characterCubit,
+                child: BlocConsumer<CharacterCubit, CharacterState>(
+                  listener: (context, state) {
+                    // TODO: implement listener
+                  },
+                  builder: (context, state) {
+                    return state.maybeMap(orElse: () {
+                      return Container();
+                    }, onLoading: (e) {
+                      return Center(child: CircularProgressIndicator());
+                    }, onFilterCharacter: (e) {
+                      return GridView.builder(
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemCount: e.characterData.characterList.length,
+                        itemBuilder: (context, index) {
+                          return CharacterCardWidget(
+                              character: e.characterData.characterList[index]);
+                        },
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                                mainAxisSpacing: 10,
+                                childAspectRatio: 0.8,
+                                crossAxisSpacing: 10),
+                      );
+                    });
+                  },
                 ),
-              )
-            ],
-          ),
+              ),
+            )
+          ],
         ),
       ),
       floatingActionButton: FloatingActionButton(

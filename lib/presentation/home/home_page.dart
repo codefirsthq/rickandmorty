@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:rickandmorty/presentation/home/character/character_page.dart';
 import 'package:rickandmorty/presentation/home/episode/episode_page.dart';
+import 'package:rickandmorty/presentation/home/home_controller.dart';
 
 import 'location/location_page.dart';
 
@@ -15,6 +17,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
   PageController _controller = PageController();
+  final _homeController = Get.find<HomeController>();
   int _currentIndex = 0;
   @override
   Widget build(BuildContext context) {
@@ -37,21 +40,35 @@ class _HomePageState extends State<HomePage>
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         onTap: onTap,
         currentIndex: _currentIndex,
         items: [
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Character"),
-          BottomNavigationBarItem(icon: Icon(Icons.movie), label: "Episode"),
           BottomNavigationBarItem(
-              icon: Icon(Icons.location_city), label: "Location"),
+            icon: Image.asset('assets/icons/ic_character.png'),
+            label: "Character",
+          ),
+          BottomNavigationBarItem(
+              icon: Image.asset('assets/icons/ic_episode.png'),
+              label: "Episode"),
+          BottomNavigationBarItem(
+              icon: Image.asset('assets/icons/ic_location.png'),
+              label: "Location"),
         ],
       ),
     );
   }
 
-  onTap(int index) {
-    _controller.jumpToPage(index);
-    _currentIndex = index;
-    setState(() {});
+  onTap(int index) async {
+    if (index == _currentIndex) {
+      if (index == 0) _homeController.scrollCharacterList();
+      if (index == 1) _homeController.scrollEpisodeList();
+      if (index == 2) _homeController.scrollLocationList();
+    }
+    {
+      _controller.jumpToPage(index);
+      _currentIndex = index;
+      setState(() {});
+    }
   }
 }

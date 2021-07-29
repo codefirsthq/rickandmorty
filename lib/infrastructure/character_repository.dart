@@ -83,4 +83,23 @@ class CharacterRepository extends ICharacterFacade {
       return left(FailureDataModel(errorMessage: "Error Other", errorOBj: e));
     }
   }
+
+  @override
+  Future<Either<FailureDataModel, List<CharacterDataModel>>>
+      getMultipleCharacter(List<String> urls) async {
+    List<Response> response;
+    try {
+      response = await Future.wait(urls.map((e) => dio.get(e)).toList());
+
+      List<CharacterDataModel> _listDataModel =
+          response.map((e) => CharacterDataModel.fromJson(e.data)).toList();
+
+      return right(_listDataModel);
+    } on DioError catch (dioError) {
+      return left(
+          FailureDataModel(errorMessage: dioError.message, errorOBj: dioError));
+    } catch (e) {
+      return left(FailureDataModel(errorMessage: "Error Other", errorOBj: e));
+    }
+  }
 }

@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:rickandmorty/application/location_cubit/location_controller.dart';
 import 'package:rickandmorty/application/location_cubit/location_cubit.dart';
 import 'package:rickandmorty/injectable.dart';
+import 'package:rickandmorty/presentation/home/home_controller.dart';
 import 'package:rickandmorty/presentation/home/widgets/custom_widget.dart';
 
 class LocationPage extends StatefulWidget {
@@ -15,6 +16,8 @@ class LocationPage extends StatefulWidget {
 
 class _LocationPageState extends State<LocationPage> {
   final _location = Get.find<LocationController>();
+  final _homeContrller = Get.find<HomeController>();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -23,10 +26,11 @@ class _LocationPageState extends State<LocationPage> {
         child: BlocConsumer<LocationCubit, LocationState>(
           listener: (context, state) {
             state.maybeMap(
-                orElse: () {},
-                onGetAllLocation: (e) {
-                  _location.setLocationData(e.locationReqRes);
-                });
+              orElse: () {},
+              onGetAllLocation: (e) {
+                _location.setLocationData(e.locationReqRes);
+              },
+            );
           },
           builder: (context, state) {
             return CustomScrollView(
@@ -35,23 +39,27 @@ class _LocationPageState extends State<LocationPage> {
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
                     child: PageTitle(
-                      title: "Episodes",
+                      title: "Location",
                     ),
                   ),
                 ),
                 SliverToBoxAdapter(
                   child: ListView.builder(
+                    controller: _homeContrller.getLocationScrollController,
                     shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),
                     itemCount: _location.getLocationList.length,
                     itemBuilder: (context, index) {
                       var _data = _location.getLocationList[index];
-                      return Card(
-                        child: ListTile(
-                          title: Text(_data.name ?? "No Name"),
-                          subtitle: Text(_data.dimension ?? "Dimension"),
-                          trailing: Text(_data.type ?? "No Type"),
-                        ),
+                      return Column(
+                        children: [
+                          ListTile(
+                            title: Text(_data.name ?? "No Name"),
+                            subtitle: Text(_data.dimension ?? "Dimension"),
+                            trailing: Text(_data.type ?? "No Type"),
+                          ),
+                          Divider()
+                        ],
                       );
                     },
                   ),

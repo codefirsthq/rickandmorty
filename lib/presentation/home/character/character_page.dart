@@ -10,6 +10,7 @@ import 'package:rickandmorty/application/character_cubit/character_controller.da
 import 'package:rickandmorty/application/character_cubit/character_cubit.dart';
 import 'package:rickandmorty/domain/character/character_enum.dart';
 import 'package:rickandmorty/presentation/home/character/character_serach_page.dart';
+import 'package:rickandmorty/presentation/home/home_controller.dart';
 import 'package:rickandmorty/presentation/home/widgets/character_card_widget.dart';
 import 'package:rickandmorty/presentation/home/widgets/custom_widget.dart';
 
@@ -33,15 +34,20 @@ class CharacterGridWidget extends StatefulWidget {
 
 class _CharacterGridWidgetState extends State<CharacterGridWidget> {
   final controller = Get.find<CharacterController>();
+  final homeController = Get.find<HomeController>();
   RefreshController _refreshController =
       RefreshController(initialRefresh: false);
   void _onRefresh() async {
     _characterCubit.getAllCharacter();
   }
 
-  void _onLoading(String url) async {
+  void _onLoading(String? url) async {
     // monitor network fetch
-    _characterCubit.loadMoreCharacters(url: url);
+    if (url == null) {
+      _refreshController.loadNoData();
+    } else {
+      _characterCubit.loadMoreCharacters(url: url);
+    }
   }
 
   final _characterCubit = getIt<CharacterCubit>();
@@ -97,52 +103,58 @@ class _CharacterGridWidgetState extends State<CharacterGridWidget> {
         controller: _refreshController,
         onRefresh: _onRefresh,
         onLoading: () => _onLoading(controller.getCharacterData.info.next!),
-        child: CustomScrollView(slivers: [
-          SliverToBoxAdapter(
-            child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-                child: PageTitle(title: "Characters")),
-          ),
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-              child: TextFormField(
-                onTap: () {
-                  Get.toNamed((CharacterSearchPage.TAG));
-                },
-                readOnly: true,
-                decoration: InputDecoration(
-                  hintText: "Search Character",
-                  isDense: false,
-                  filled: true,
-                  fillColor: Colors.white,
-                  suffixIcon: Icon(Icons.search),
-                  border: OutlineInputBorder(
-                      gapPadding: 0, borderRadius: BorderRadius.circular(8)),
-                  contentPadding: EdgeInsets.symmetric(horizontal: 20),
+        child: CustomScrollView(
+            controller: homeController.getCharacterScrollController,
+            physics: BouncingScrollPhysics(),
+            slivers: [
+              SliverToBoxAdapter(
+                child: Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                    child: PageTitle(title: "Characters")),
+              ),
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                  child: TextFormField(
+                    onTap: () {
+                      Get.toNamed((CharacterSearchPage.TAG));
+                    },
+                    readOnly: true,
+                    decoration: InputDecoration(
+                      hintText: "Search Character",
+                      isDense: false,
+                      filled: true,
+                      fillColor: Colors.white,
+                      suffixIcon: Icon(Icons.search),
+                      border: OutlineInputBorder(
+                          gapPadding: 0,
+                          borderRadius: BorderRadius.circular(8)),
+                      contentPadding: EdgeInsets.symmetric(horizontal: 20),
+                    ),
+                  ),
                 ),
               ),
-            ),
-          ),
-          SliverPadding(padding: EdgeInsets.symmetric(vertical: 10)),
-          SliverPadding(
-            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-            sliver: SliverGrid(
-              delegate: SliverChildBuilderDelegate(
-                (context, index) {
-                  return CharacterCardWidget(
-                      character: controller.getCharacterList[index]);
-                },
-                childCount: controller.getCharacterList.length,
+              SliverPadding(padding: EdgeInsets.symmetric(vertical: 10)),
+              SliverPadding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                sliver: SliverGrid(
+                  delegate: SliverChildBuilderDelegate(
+                    (context, index) {
+                      return CharacterCardWidget(
+                          character: controller.getCharacterList[index]);
+                    },
+                    childCount: controller.getCharacterList.length,
+                  ),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 10,
+                      childAspectRatio: 0.8,
+                      crossAxisSpacing: 10),
+                ),
               ),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 10,
-                  childAspectRatio: 0.8,
-                  crossAxisSpacing: 10),
-            ),
-          ),
-        ]));
+            ]));
   }
 }

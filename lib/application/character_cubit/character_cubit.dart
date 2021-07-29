@@ -48,4 +48,13 @@ class CharacterCubit extends Cubit<CharacterState> {
       (r) => emit(CharacterState.onFilterCharacter(characterData: r)),
     );
   }
+
+  void getMultiCharacter(List<String> url) async {
+    emit(CharacterState.onLoading());
+    final _data = await _facade.getMultipleCharacter(url);
+    _data.fold(
+      (l) => emit(CharacterState.onError()),
+      (r) => emit(CharacterState.onGetMultipleCharacter(r)),
+    );
+  }
 }

@@ -13,6 +13,13 @@ class EpisodeController extends GetxController {
     this.episodeReqRes.value = data;
   }
 
+  void addMoreData(EpisodeReqRes data) {
+    var _temp = this.episodeReqRes.value;
+
+    this.episodeReqRes.value.episodeList.addAll(data.episodeList);
+    this.episodeReqRes.value = _temp.copyWith(info: data.info);
+  }
+
   EpisodeReqRes get getEpisodeData => this.episodeReqRes.value;
 
   List<EpisodeDataModel> get getEpisodeList =>

@@ -16,4 +16,6 @@ abstract class CharacterState with _$CharacterState {
   const factory CharacterState.onFilterCharacter({
     required CharacterReqRes characterData,
   }) = _OnFilterCharacter;
+  const factory CharacterState.onGetMultipleCharacter(
+      List<CharacterDataModel> characterList) = _OnGetMultipleCharacter;
 }

@@ -38,8 +38,10 @@ dependencies:
   freezed_annotation: null
   get: ^4.2.4
   get_it: ^7.2.0
+  image_downloader: ^0.30.0
   injectable: ^1.4.1
   json_annotation: null
+  open_file: ^3.2.1
   palette_generator: ^0.3.0
   pull_to_refresh: ^2.0.0
 
@@ -55,6 +57,7 @@ dev_dependencies:
   freezed: null
   injectable_generator: ^1.4.1
   json_serializable: null
+  photo_view: ^0.12.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -66,7 +69,8 @@ flutter:
   uses-material-design: true
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/logo/rnm_logo.png
+    - assets/icons/
+    - assets/logo/
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

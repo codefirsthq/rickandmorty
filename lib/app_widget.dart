@@ -17,7 +17,15 @@ class AppWidget extends StatelessWidget {
               elevation: 0,
               iconTheme: IconThemeData(color: Colors.black)),
           scaffoldBackgroundColor: Colors.white,
-          primarySwatch: Colors.blue,
+          primarySwatch: Colors.blueGrey,
+          bottomNavigationBarTheme: BottomNavigationBarThemeData(
+            elevation: 7,
+            backgroundColor: Color(0xFFFFFFFF),
+            selectedLabelStyle:
+                TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+            showSelectedLabels: true,
+            unselectedLabelStyle: TextStyle(color: Colors.black),
+          ),
         ),
         initialBinding: HomeBinding(),
         initialRoute: HomePage.TAG);
